@@ -13,6 +13,11 @@ main {
   display: flex;
   justify-content: space-between;
 }
+.current-temperature {
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+}
 header {
   border-bottom: 1px solid #155263;
   padding-bottom: 10px;
