@@ -9,26 +9,31 @@
   <body>
     <div class="weather-app">
       <header>
-        <input
-          type="search"
-          placeholder="Enter a city"
-          required
-          class="search-input"
-        />
-        <input type="submit" value="Search" class="search-button" />
+        <form id="search-city">
+          <input
+            type="text"
+            id="city-input"
+            placeholder="Enter a city"
+            required
+            class="search-input"
+          />
+          <input type="submit" value="Search" class="search-button" />
+        </form>
       </header>
       <main>
         <div class="current-weather">
           <div>
-            <h1>Paris</h1>
+            <h1 id="city-name">Paris</h1>
+            <!-- This will change -->
+            <p id="date-time">Saturday 15:32</p>
+            <br />
             <p>
-              Saturday 15:32, Moderate Rain <br />
               Humidity: <strong> 87%</strong>. Wind: <strong>7.2km/h</strong>
             </p>
           </div>
         </div>
+        <div class="forecast-weather">Moderate Rain</div>
         <div class="current-temperature">☀️ 14°C</div>
-        <div class="forecast-weather"></div>
       </main>
       <footer>
         <p>
@@ -38,5 +43,6 @@
         </p>
       </footer>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
