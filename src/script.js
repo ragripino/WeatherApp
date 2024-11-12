@@ -1,6 +1,37 @@
-function displayDateTime() {
-  const now = new Date();
-  const daysOfWeek = [
+function displayTemperature(response) {
+  let temperatureElement = document.querySelector("#current-temperature");
+  let temperature = Math.round(response.data.temperature.current);
+  let cityElement = document.querySelector("#current-city");
+
+  cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = temperature;
+}
+
+function search(event) {
+  event.preventDefault();
+  let searchInputElement = document.querySelector("#search-input");
+  let city = searchInputElement.value;
+
+  let apiKey = "d03fe42betef5088d8ob3dce0df46ae7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let day = date.getDay();
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -9,32 +40,15 @@ function displayDateTime() {
     "Friday",
     "Saturday",
   ];
-  const day = daysOfWeek[now.getDay()];
-  const hours = now.getHours().toString().padStart(2, "0");
-  const minutes = now.getMinutes().toString().padStart(2, "0");
 
-  // Format: e.g., Tuesday 16:00
-  const formattedDateTime = `${day} ${hours}:${minutes}`;
-
-  // Display the date and time in the element with class "current-time"
-  document.querySelector(".current-time").textContent = formattedDateTime;
+  let formattedDay = days[day];
+  return `${formattedDay}, ${hours}:${minutes}`;
 }
 
-// Call displayDateTime once when the page loads
-displayDateTime();
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
 
-// Update every minute
-setInterval(displayDateTime, 60000);
+let currentDateELement = document.querySelector("#current-date");
+let currentDate = new Date();
 
-// Feature #2: Search Engine to Display City Name
-document.querySelector("form").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent form submission
-
-  // Get the city name from the search input
-  const city = document.querySelector(".search-input").value.trim();
-
-  // Display the city name in the element with class "current-city"
-  if (city) {
-    document.querySelector(".current-city").textContent = city;
-  }
-});
+currentDateELement.innerHTML = formatDate(currentDate);
