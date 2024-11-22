@@ -10,7 +10,7 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   temperatureElement.innerHTML = temperature;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-  windElement.innerHTML = response.data.wind.speed;
+  windElement.innerHTML = `${response.data.wind.speed} km/h`;
 }
 
 function search(event) {
