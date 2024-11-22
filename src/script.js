@@ -43,6 +43,32 @@ document.addEventListener("DOMContentLoaded", Initialize);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
+// function to add five days of the week forecast
+
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml += `
+   <div class="weather-forecast-day">
+            <div class="weather-forecast-date">${day}</div>
+            <div class="weather-forecast-icon">🌤️</div>
+            <div class="weather-forecast-temperatures">
+              <div class="weather-forecast-temperature">
+                <strong>17°</strong>
+              </div>
+              <div class="weather-forecast-temperature">
+                <strong> 9°</strong>
+              </div>
+            </div>
+            </div>
+  `;
+  });
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
 // Function to format the date
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -76,3 +102,4 @@ let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
+displayForecast();
