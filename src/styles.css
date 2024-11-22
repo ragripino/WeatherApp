@@ -100,7 +100,32 @@ main {
   font-size: 80px;
   font-weight: bold;
 }
+.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.weather-forecast-date {
+  text-align: center;
+  color: #f65282;
+  font-size: 16px;
+  line-height: 20px;
+}
 
+.weather-forecast-icon {
+  font-size: 38px;
+  text-align: center;
+}
+.weather-forecast-temperatures {
+  text-align: center;
+  color: aqua;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+.weather-forecast-temperature {
+  padding: 0 10px;
+}
 .current-temperature-unit {
   font-size: 28px;
   position: relative;
